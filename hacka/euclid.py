@@ -14,6 +14,7 @@ def haversine(lon1, lat1, lon2, lat2):
     a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
     c = 2 * asin(sqrt(a)) 
     km = 6367 * c
+    km = float("%.2f" % round(km, 2))
     return km
 
 allcoord = [[37.874379, -122.263606, "Tolman Hall: Hearst Avenue @ Arch Street"],
