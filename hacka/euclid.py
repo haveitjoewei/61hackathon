@@ -1,5 +1,4 @@
 from math import radians, cos, sin, asin, sqrt
-#import dateutil.parser as dparser
 
 def haversine(lon1, lat1, lon2, lat2):
     """
@@ -44,7 +43,7 @@ def findcloseststop(curlon, curlat):
         if distance < maxdistance:
             maxdistance = distance
             busstop = allcoord[i][2]
-    return (maxdistance, busstop)
+    return (str(maxdistance) + " kilometers to nearest stop", busstop)
 
 allTimes = {"Downtown Berkeley Bart Station":["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30"],
         "Oxford Street @ University Avenue":["7:02", "7:32", "8:02", "8:32", "9:02", "9:32", "10:02", "10:32", "11:02", "11:32", "12:02", "12:32", "13:02", "13:32", "14:02", "14:32", "15:02", "15:32", "16:02", "16:32", "17:02", "17:32", "18:02", "18:32", "19:02"],
@@ -64,20 +63,6 @@ allTimes = {"Downtown Berkeley Bart Station":["7:00", "7:30", "8:00", "8:30", "9
         "Banway Building: Bancroft Way @ Shattuck Avenue":["7:27", "7:57", "8:27", "8:57", "9:27", "9:57", "10:27", "10:57", "11:27", "11:57", "12:27", "12:57", "13:27", "13:57", "14:27", "14:57", "15:27", "15:57", "16:27", "16:57", "17:27", "17:57", "18:27", "18:57", "19:27"],
         "Shattuck Avenue @ Kittredge Street":["7:28", "7:58", "8:28", "8:58", "9:28", "9:58", "10:28", "10:58", "11:28", "11:58", "12:28", "12:58", "13:28", "13:58", "14:28", "14:58", "15:28", "15:58", "16:28", "16:58", "17:28", "17:58", "18:28", "18:58", "19:28"],
         }
-
-# def closesttime(stationname):
-#     """
-#     >>>closesttime("Downtown Berkeley Bart Station")
-#     "7:00"
-#     """
-#     nowtime = datetime.datetime.now()
-#     dparser.parse(nowtime, fuzzy=True, ignoretz=True)
-#     for i in range(0, 30):
-#         nexttime = allTimes[stationname][i]
-#         dparser.parse(nexttime, fuzzy=True, ignoretz=True)
-#         if not nowtime>nexttime:
-#             break
-#     return nexttime
 
 
             
