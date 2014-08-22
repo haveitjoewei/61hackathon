@@ -78,13 +78,13 @@ def findcloseststop(curlon, curlat):
     
     maxdistance = float('inf')
     busstop = ''
-    for i in range (0, 17):
+    for i in range (0, 16):
         distance = haversine(curlon, curlat, allcoord[i][0], allcoord[i][1])
         if distance < maxdistance:
             maxdistance = distance
             busstop = allcoord[i][2]
             closest = closesttime(busstop)
-            return ("Kilometers to nearest stop: "+ str(maxdistance), "Nearest stop: " + busstop, "Next arrival: " + closest)
+    return ("Kilometers to nearest stop: "+ str(maxdistance), "Nearest stop: " + busstop, "Next arrival: " + closest)
 
 
 
