@@ -1,5 +1,5 @@
 from math import radians, cos, sin, asin, sqrt
-import dateutil.parser as dparser
+#import dateutil.parser as dparser
 
 def haversine(lon1, lat1, lon2, lat2):
     """
@@ -64,19 +64,19 @@ allTimes = {"Downtown Berkeley Bart Station":["7:00", "7:30", "8:00", "8:30", "9
         "Shattuck Avenue @ Kittredge Street":["7:28", "7:58", "8:28", "8:58", "9:28", "9:58", "10:28", "10:58", "11:28", "11:58", "12:28", "12:58", "13:28", "13:58", "14:28", "14:58", "15:28", "15:58", "16:28", "16:58", "17:28", "17:58", "18:28", "18:58", "19:28"],
         }
 
-def closesttime(stationname):
-    """
-    >>>closesttime("Downtown Berkeley Bart Station")
-    "7:00"
-    """
-    nowtime = datetime.datetime.now()
-    dparser.parse(nowtime, fuzzy=True, ignoretz=True)
-    for i in range(0, 30):
-        nexttime = allTimes[stationname][i]
-        dparser.parse(nexttime, fuzzy=True, ignoretz=True)
-        if not nowtime>nexttime:
-            break
-    return nexttime
+# def closesttime(stationname):
+#     """
+#     >>>closesttime("Downtown Berkeley Bart Station")
+#     "7:00"
+#     """
+#     nowtime = datetime.datetime.now()
+#     dparser.parse(nowtime, fuzzy=True, ignoretz=True)
+#     for i in range(0, 30):
+#         nexttime = allTimes[stationname][i]
+#         dparser.parse(nexttime, fuzzy=True, ignoretz=True)
+#         if not nowtime>nexttime:
+#             break
+#     return nexttime
 
 
             
