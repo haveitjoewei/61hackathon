@@ -1,23 +1,6 @@
 from math import radians, cos, sin, asin, sqrt
 import datetime
 
-def haversine(lon1, lat1, lon2, lat2):
-    """
-    Calculate the great circle distance between two points 
-    on the earth (specified in decimal degrees)
-    """
-    # convert decimal degrees to radians 
-    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
-    # haversine formula 
-    dlon = lon2 - lon1 
-    dlat = lat2 - lat1 
-    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
-    c = 2 * asin(sqrt(a)) 
-    km = 6367 * c
-    #converts into decimal with two places
-    km = float("%.2f" % round(km, 2))
-    return km
-
 allcoord = [[37.874379, -122.263606, "Tolman Hall: Hearst Avenue @ Arch Street"],
 [37.87482, -122.26403, "North Gate Hall: Hearst Avenue @ Euclid Avenue"],
 [37.875209, -122.257919, "Cory Hall: Hearst Avenue @ LeRoy Avenue"],
@@ -35,17 +18,6 @@ allcoord = [[37.874379, -122.263606, "Tolman Hall: Hearst Avenue @ Arch Street"]
 [37.868273, -122.267661, "Shattuck Avenue @ Kittredge Street"], 
 [37.870178, -122.267876, "Downtown Berkeley Bart Station"], 
 [37.872618, -122.265794, "Oxford Street @ University Avenue"]]
-
-#returns string
-def findcloseststop(curlon, curlat):
-    maxdistance = float('inf')
-    busstop = ''
-    for i in range (0, 17):
-        distance = haversine(curlon, curlat, allcoord[i][0], allcoord[i][1])
-        if distance < maxdistance:
-            maxdistance = distance
-            busstop = allcoord[i][2]
-    return (str(maxdistance) + " kilometers to nearest stop", busstop)
 
 allTimes = {"Downtown Berkeley Bart Station":["07:00", "07:30", "08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30"],
         "Oxford Street @ University Avenue":["07:02", "07:32", "08:02", "08:32", "09:02", "09:32", "10:02", "10:32", "11:02", "11:32", "12:02", "12:32", "13:02", "13:32", "14:02", "14:32", "15:02", "15:32", "16:02", "16:32", "17:02", "17:32", "18:02", "18:32", "19:02"],
@@ -66,13 +38,30 @@ allTimes = {"Downtown Berkeley Bart Station":["07:00", "07:30", "08:00", "08:30"
         "Shattuck Avenue @ Kittredge Street":["07:28", "07:58", "08:28", "08:58", "09:28", "09:58", "10:28", "10:58", "11:28", "11:58", "12:28", "12:58", "13:28", "13:58", "14:28", "14:58", "15:28", "15:58", "16:28", "16:58", "17:28", "17:58", "18:28", "18:58", "19:28"],
         }
 
+
+def haversine(lon1, lat1, lon2, lat2):
+    """
+    Calculate the great circle distance between two points 
+    on the earth (specified in decimal degrees)
+    """
+    # convert decimal degrees to radians 
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
+    # haversine formula 
+    dlon = lon2 - lon1 
+    dlat = lat2 - lat1 
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+    c = 2 * asin(sqrt(a)) 
+    km = 6367 * c
+    #converts into decimal with two places
+    km = float("%.2f" % round(km, 2))
+    return km
+
 def closesttime(stationname):
     """
     >>> closesttime("Downtown Berkeley Bart Station")
     '14:30'
     """
     nowtime = datetime.datetime.time(datetime.datetime.now())
-
     for i in range(0, 25):
         prevtime = allTimes[stationname][i-1]
         nexttime = allTimes[stationname][i]
@@ -83,15 +72,29 @@ def closesttime(stationname):
                 return nexttime
             if nowtime.minute < minute: 
                 return prevtime
-        
-            
+
+#returns string
+def findcloseststop(curlon, curlat):
+    
+    maxdistance = float('inf')
+    busstop = ''
+    for i in range (0, 17):
+        distance = haversine(curlon, curlat, allcoord[i][0], allcoord[i][1])
+        if distance < maxdistance:
+            maxdistance = distance
+            busstop = allcoord[i][2]
+            closest = closesttime(busstop)
+            return ("Kilometers to nearest stop: "+ str(maxdistance), "Nearest stop: " + busstop, "Next arrival: " + closest)
 
 
 
-            
 
 
 
-        
+
+
+
+
+
 
 

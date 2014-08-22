@@ -1,100 +1,82 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="../../favicon.ico">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<link rel="icon" href="../../favicon.ico">
 
-    <title>Bears for Life</title>
+<title>Bears for Life</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../dist/static" rel="stylesheet">
+<!-- Bootstrap core CSS -->
+<link href="../../dist/static" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="starter-template.css/static/css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="starter-template.css/static/css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+<!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+<!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+<script src="../../assets/js/ie-emulation-modes-warning.js"></script>
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  <link href = "css/boostrap.css" rel = "stylesheet" media = "screen">
-  <link href = "css/style.css" rel = "stylesheet">
-  </head>
-  <body background = "http://cdn01.wallconvert.com/_media/wallpapers_1280x800/1/2/uc-berkeley-sunset-california-17889.jpg"><div id="_GPL_e6a00_parent_div" style="position: absolute; top: 0px; left: 0px; width: 1px; height: 1px; z-index: 2147483647;"><object type="application/x-shockwave-flash" id="_GPL_e6a00_swf" data="http://cdncache-a.akamaihd.net/items/e6a00/storage.swf?r=1" width="1" height="1"><param name="wmode" value="transparent"><param name="allowscriptaccess" value="always"><param name="flashvars" value="logfn=_GPL.items.e6a00.log&amp;onload=_GPL.items.e6a00.onload&amp;onerror=_GPL.items.e6a00.onerror&amp;LSOName=gpl"></object></div>
+      <![endif]-->
+      <link href = "css/boostrap.css" rel = "stylesheet" media = "screen">
+      <link href = "css/style.css" rel = "stylesheet">
+    </head>
+    <body background = "http://www.livrigames.com/wallpaper/wallpapers/wallpapers-light-blue-designs-cool-wallpaper-cool-light-backgrounds-coolwallpaper-wallpapers-blue-designs.jpg"><div id="_GPL_e6a00_parent_div" style="position: absolute; top: 0px; left: 0px; width: 1px; height: 1px; z-index: 2147483647;"><object type="application/x-shockwave-flash" id="_GPL_e6a00_swf" data="http://cdncache-a.akamaihd.net/items/e6a00/storage.swf?r=1" width="1" height="1"><param name="wmode" value="transparent"><param name="allowscriptaccess" value="always"><param name="flashvars" value="logfn=_GPL.items.e6a00.log&amp;onload=_GPL.items.e6a00.onload&amp;onerror=_GPL.items.e6a00.onerror&amp;LSOName=gpl"></object></div>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <form action="demo_form.asp">
-          Current Address: <input type="text" name="fname"><br>
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <div class="container">
+              <h1>Bear Transit App</h1>
+              <h4>Greetings! Use this app to find the nearest Bear Transit Perimeter Line bus stop location and the next arrival time. The location box accepts the input of your location in longitude and latitude. Thankfully, we've programmed the app to automatically accept your computer's location through the browser, but if (for some weird reason) you happen to know the coordinates of a different location for which you'd like to use this app, feel free to do that.</h4>
 
-          Destination: <input type="text" name="lname"><br>
-          <input type="submit" value="Submit">
-          </form>
-          <p><iframe src="//batchgeo.com/map/15467bab7b4617965f7077fb7be0f82d" frameborder="0" width="70%" height="550" style="border:1px solid #aaa;border-radius:10px;"></iframe></p><p><small>View <a href="http://batchgeo.com/map/15467bab7b4617965f7077fb7be0f82d">Bear Transit Bus Map</a> in a full screen map</small></p>
-          <a class="navbar-brand" href="#">Project name</a>
+              <form action='/api/cheep' method="POST">
+                Location:
+                <input name="name" type="text" id="location" /> 
+                <input type="submit" />
+              </form>
+              <div id="feed">
+                {% if loc %}
+                <div class="loc">
+                  <br></br>
+                  <b>{{ loc[0] }}</b>
+                  <p>{{ loc[1]}}</p>
+                  <p>{{ loc[2]}}</p>
+                </div>
+                {% endif %}
+              </div>
+            </form>
+            <p><iframe src="//batchgeo.com/map/15467bab7b4617965f7077fb7be0f82d" frameborder="0" width="70%" height="450" style="border:1px solid #aaa;border-radius:10px;"></iframe></p><p><small>View <a href="http://batchgeo.com/map/15467bab7b4617965f7077fb7be0f82d">Bear Transit Bus Map</a> in a full screen map</small></p>
+
+            <p><small>Click <a href="http://pt.berkeley.edu/sites/default/files/New%20Perimeter%20line%20schedule.pdf">here</a> for Bear Transit Schedule</small></p>
+
+          </div>
+          
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="/contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
       </div>
-    </div>
 
-    <div class="container">
 
-      <div class="hacka.css">
-        <h1>CAL Bear Transit</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
-      <h1>Cheeper</h1>
-    <form action='/api/cheep' method="POST">
-      Name:
-      <input name="name" type="text" id="location" /> 
-      Cheep:
-      <input name="cheep" type="text" maxlength="76" /> 
-      <input type="submit" />
-    </form>
-  <div id="feed">
-    <h2> Bear Transit App </h2>
-    {% if loc %}
-    <div class="loc">
-      <b>{{ loc[0] }}</b>
-      <p>{{ loc[1]}}</p>
-    </div>
-    {% endif %}
-    
-  </div>
-  <script>
-    var position;
-    var latitude;
-    var longitude;
-    function onpositiondata(position) {
-      latitude = position.coords.latitude;
-      longitude = position.coords.longitude;
-      document.getElementById("location").value= latitude+","+longitude;
-    }
-    
-    navigator.geolocation.getCurrentPosition(onpositiondata);
-  </script>
+      <script>
+      var position;
+      var latitude;
+      var longitude;
+      function onpositiondata(position) {
+        latitude = position.coords.latitude;
+        longitude = position.coords.longitude;
+        document.getElementById("location").value= latitude+","+longitude;
+      }
+
+      navigator.geolocation.getCurrentPosition(onpositiondata);
+      </script>
 
     </div><!-- /.container -->
 
@@ -104,6 +86,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="../../static"></script>
-  
 
-</body></html>
+
+  </body></html>
