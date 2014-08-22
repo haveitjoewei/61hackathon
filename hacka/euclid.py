@@ -14,6 +14,7 @@ def haversine(lon1, lat1, lon2, lat2):
     a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
     c = 2 * asin(sqrt(a)) 
     km = 6367 * c
+    km = float("%.2f" % round(km, 2))
     return km
 
 allcoord = [[37.874379, -122.263606, "Tolman Hall: Hearst Avenue @ Arch Street"],
@@ -43,7 +44,7 @@ def findcloseststop(curlon, curlat):
         if distance < maxdistance:
             maxdistance = distance
             busstop = allcoord[i][2]
-    return (maxdistance, busstop)
+    return (str(maxdistance) + " kilometers to nearest stop", busstop)
 
 allTimes = {"Downtown Berkeley Bart Station":["7:00", "7:30", "8:00", "8:30", "9:00", "9:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00", "18:30", "19:00", "19:30"],
         "Oxford Street @ University Avenue":["7:02", "7:32", "8:02", "8:32", "9:02", "9:32", "10:02", "10:32", "11:02", "11:32", "12:02", "12:32", "13:02", "13:32", "14:02", "14:32", "15:02", "15:32", "16:02", "16:32", "17:02", "17:32", "18:02", "18:32", "19:02"],
