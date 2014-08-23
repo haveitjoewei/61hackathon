@@ -1,5 +1,4 @@
 import sqlite3
-import time
 from euclid import findcloseststop
 from flask import Flask, request, g, render_template, redirect
 
