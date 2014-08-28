@@ -72,7 +72,7 @@ def closesttime(stationname):
                 return nexttime
             if nowtime.minute < minute: 
                 return prevtime
-        return allTimes[stationname][0][1:]
+    return allTimes[stationname][0][1:]
 
 #returns string
 def findcloseststop(curlon, curlat):
