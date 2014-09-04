@@ -62,7 +62,6 @@ def closesttime(stationname):
         '10:38'
         """
     nowtime = datetime.datetime.time(datetime.datetime.now())
-    return 'hi'
     for i in range(0, 25):
         prevtime = allTimes[stationname][i-1]
         nexttime = allTimes[stationname][i]
