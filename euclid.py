@@ -61,6 +61,7 @@ def closesttime(stationname):
         >>> closesttime("Evans Hall: Hearst Mining Circle side")
         '10:38'
         """
+    error
     nowtime = datetime.datetime.time(datetime.datetime.now())
     for i in range(0, 25):
         prevtime = allTimes[stationname][i-1]
